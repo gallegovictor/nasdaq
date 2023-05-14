@@ -8,8 +8,8 @@ import glob
 import re
 from itertools import combinations, islice
 from cvxopt import matrix, solvers
-from sklearn.linear_model import LinearRegression
-
+#from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt 
 class MyUtils:
   PORTFOLIO_PRICE = 10000#USD
   DOW_JONES_PRICE_x10 = 33980.32*10
@@ -339,48 +339,72 @@ class MyUtils:
     print("*******************************************\n\n\n\n\n\n\n\t\tEnd of the function\n\n\n\n\n\n\n*******************************************")
     return np.array(sol['x'])
 
-  def best_columns(X, y):
-    iters = int(X.shape[0]/100)
-    print(iters)
-    first = True
-    score_list = []
-    col_dict = {}
-    save_columns = X.columns
-    chosen_instruments = np.zeros((30,29))
-    for a in range(0,30):
-      for i in range(0,iters):
-        if first == True:
-          X
-          random_numbers = random.sample(range(0, len(X.columns)),19)
-          print(X.columns[random_numbers.sort()])
-        # Print the random numbers
-          print(random_numbers)
-          first = False
-          temp = X[X.columns[random_numbers]]
-        #X = X.drop(X.columns[-1], axis=1)
-          print(temp.columns)
-        start= MyUtils.WEEKLY_SAMPLES*i*3
-        finish = (MyUtils.WEEKLY_SAMPLES*i*3+MyUtils.WEEKLY_SAMPLES)
-        test_start = (MyUtils.WEEKLY_SAMPLES*i*3+MyUtils.WEEKLY_SAMPLES+1)
-        test_finish = (MyUtils.WEEKLY_SAMPLES*i*3+MyUtils.WEEKLY_SAMPLES+1+MyUtils.WEEKLY_SAMPLES)
-        reg = LinearRegression().fit(temp[start:finish], y_df[start:finish])
-        print("Score using days from: " + str(start) +"to" +str(finish))
-        score = reg.score(temp[test_start:test_finish], y_df[test_start:test_finish])
-        print("Score:", score)
-        score_list.append(score)
-        #print("Average score: so far", avg)
-        if test_finish > temp.shape[0]:
-          break
-      avg = np.mean((np.array(score_list)))
-      var = np.var((np.array(score_list)))
-      print("Average score in iter #:" +str(a)+" ", avg)
-      print("Variance:  "+str(a)+" ", var)
-      for j in range(0,len(temp.columns)):
-        print(avg)
-        chosen_instruments[a][random_numbers[j]] = avg
+  # def best_columns(X, y):
+  #   iters = int(X.shape[0]/100)
+  #   print(iters)
+  #   first = True
+  #   score_list = []
+  #   col_dict = {}
+  #   save_columns = X.columns
+  #   chosen_instruments = np.zeros((30,29))
+  #   for a in range(0,30):
+  #     for i in range(0,iters):
+  #       if first == True:
+  #         X
+  #         random_numbers = random.sample(range(0, len(X.columns)),19)
+  #         print(X.columns[random_numbers.sort()])
+  #       # Print the random numbers
+  #         print(random_numbers)
+  #         first = False
+  #         temp = X[X.columns[random_numbers]]
+  #       #X = X.drop(X.columns[-1], axis=1)
+  #         print(temp.columns)
+  #       start= MyUtils.WEEKLY_SAMPLES*i*3
+  #       finish = (MyUtils.WEEKLY_SAMPLES*i*3+MyUtils.WEEKLY_SAMPLES)
+  #       test_start = (MyUtils.WEEKLY_SAMPLES*i*3+MyUtils.WEEKLY_SAMPLES+1)
+  #       test_finish = (MyUtils.WEEKLY_SAMPLES*i*3+MyUtils.WEEKLY_SAMPLES+1+MyUtils.WEEKLY_SAMPLES)
+  #       reg = LinearRegression().fit(temp[start:finish], y_df[start:finish])
+  #       print("Score using days from: " + str(start) +"to" +str(finish))
+  #       score = reg.score(temp[test_start:test_finish], y_df[test_start:test_finish])
+  #       print("Score:", score)
+  #       score_list.append(score)
+  #       #print("Average score: so far", avg)
+  #       if test_finish > temp.shape[0]:
+  #         break
+  #     avg = np.mean((np.array(score_list)))
+  #     var = np.var((np.array(score_list)))
+  #     print("Average score in iter #:" +str(a)+" ", avg)
+  #     print("Variance:  "+str(a)+" ", var)
+  #     for j in range(0,len(temp.columns)):
+  #       print(avg)
+  #       chosen_instruments[a][random_numbers[j]] = avg
         
-      first = True
-      #print(reg.coef_)
-    print(np.argsort(sum(chosen_instruments)[::-1]))
-    col_dict.update({avg:X.columns })
-    return X[X.columns[np.argsort(sum(chosen_instruments)[::-1])]]
+  #     first = True
+  #     #print(reg.coef_)
+  #   print(np.argsort(sum(chosen_instruments)[::-1]))
+  #   col_dict.update({avg:X.columns })
+  #   return X[X.columns[np.argsort(sum(chosen_instruments)[::-1])]]
+
+
+
+
+
+  def plot_dict(dictionary, var):
+      # Get keys and values from dictionary
+      keys = list(dictionary.keys())
+      values = list(dictionary.values())
+      
+      # Plot dictionary values
+      plt.plot(keys, values, label='Dictionary Values')
+      
+      # Plot variable value
+      plt.axhline(y=var, color='r', linestyle='--', label='Variable Value')
+      
+      # Add labels and legend to plot
+      plt.xlabel('Keys')
+      plt.ylabel('Values')
+      plt.title('Dictionary Plot')
+      plt.legend()
+      
+      # Show plot
+      plt.show()
