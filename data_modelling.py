@@ -158,7 +158,9 @@ def globPaths(path):
   #print(glob.glob(path, recursive=True))
   globList=glob.glob(path, recursive=True)
   for i in range(0, len(globList)-1):
-    myDict[globList[i][-12:-4]] = globList[i]
+    var_dict = globList[i][-12:-4]
+    print(var_dict)
+    myDict[var_dict] = globList[i]
   return dict(sorted(myDict.items()))
 
 rand_vector = MyUtils.random_W(96)
@@ -194,15 +196,16 @@ save_returns_iter = '/home/victor/Escritorio/nasdaq_returns'
 for v in pathList.values():
   print('Iterating thru: '+v)
   df = pd.read_csv(v)
-  df = df.drop('Unnamed: 0', axis=1)
+  df = df.drop(['open', 'high', 'low'], axis=1)
   array = np.asarray(df)
   [rows, columns] = array.shape
   returns = MyUtils.computeDailyReturns(array,rows, columns)
-  returns = pd.DataFrame(returns, columns=['1', 'close', 'volume'])
+  returns = pd.DataFrame(returns, columns=['time', 'close', 'volume'])
   aux_volume = df.drop(['time', 'close'], axis =1)
   df = df.drop(['close', 'volume'], axis=1)
+  returns = returns.drop(['time'], axis=1)
   df = df.join(returns)
-  df = df.drop(['1', 'volume'],axis=1)
+  df = df.drop(['volume'],axis=1)
   df = df.join(aux_volume)
   [n,v_path] = str(v).split("/home/victor/Escritorio/nasdaq_completed")
   save_returns_path =save_returns_iter+ v_path
