@@ -163,7 +163,7 @@ def globPaths(path):
     myDict[var_dict] = globList[i]
   return dict(sorted(myDict.items()))
 
-rand_vector = MyUtils.random_W(96)
+rand_vector = MyUtils.random_W(91)
 price_vector = [0]*len(rand_vector)
 for i  in range(0, len(price_vector)):
   price_vector[i] = MyUtils.PORTFOLIO_PRICE*rand_vector[i]
@@ -172,6 +172,7 @@ for i  in range(0, len(price_vector)):
 
 dataset_path = '/home/victor/Escritorio/nasdaq_completed/**'
 pathDict = globPaths(dataset_path)
+print("\n\n", pathDict)
 pathList = {}
 for key, value in pathDict.items():
   if '.csv' in value:
@@ -190,7 +191,7 @@ print(pathList)
 #   priceDict21[key] = [0]*27*250
 #   priceDict22[key] = [0]*27*250
 
-df=pd.read_csv(list(pathList.values())[0])
+#df=pd.read_csv(list(pathList.values())[0])
 ##print(df.head) Aquí tengo el dataframe con la ruta del archivo, hay que meterlo en un for...
 save_returns_iter = '/home/victor/Escritorio/nasdaq_returns'
 for v in pathList.values():
