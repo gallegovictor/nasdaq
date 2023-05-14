@@ -191,7 +191,7 @@ print(pathList)
 #   priceDict21[key] = [0]*27*250
 #   priceDict22[key] = [0]*27*250
 
-#df=pd.read_csv(list(pathList.values())[0])
+df=pd.read_csv(list(pathList.values())[0])
 ##print(df.head) Aquí tengo el dataframe con la ruta del archivo, hay que meterlo en un for...
 save_returns_iter = '/home/victor/Escritorio/nasdaq_returns'
 for v in pathList.values():
