@@ -158,7 +158,7 @@ def globPaths(path):
   #print(glob.glob(path, recursive=True))
   globList=glob.glob(path, recursive=True)
   for i in range(0, len(globList)-1):
-    var_dict = globList[i][-12:-4]
+    var_dict = globList[i].split('/')[5]
     print(var_dict)
     myDict[var_dict] = globList[i]
   return dict(sorted(myDict.items()))
