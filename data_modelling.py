@@ -139,11 +139,11 @@
 # print(result.head())
 
 ###Creación de vector aleatorio W_rand:
-import glob 
-import pandas as pd
-import os
-import numpy as np
-from MyUtils import *
+# import glob 
+# import pandas as pd
+# import os
+# import numpy as np
+# from MyUtils import *
 
 
 
@@ -152,65 +152,65 @@ from MyUtils import *
 
 
 
-def globPaths(path):
-  myDict = {}
-  globList = []
-  #print(glob.glob(path, recursive=True))
-  globList=glob.glob(path, recursive=True)
-  for i in range(0, len(globList)-1):
-    var_dict = globList[i].split('/')[5]
-    print(var_dict)
-    myDict[var_dict] = globList[i]
-  return dict(sorted(myDict.items()))
+# def globPaths(path):
+#   myDict = {}
+#   globList = []
+#   #print(glob.glob(path, recursive=True))
+#   globList=glob.glob(path, recursive=True)
+#   for i in range(0, len(globList)-1):
+#     var_dict = globList[i].split('/')[5]
+#     print(var_dict)
+#     myDict[var_dict] = globList[i]
+#   return dict(sorted(myDict.items()))
 
-rand_vector = MyUtils.random_W(91)
-price_vector = [0]*len(rand_vector)
-for i  in range(0, len(price_vector)):
-  price_vector[i] = MyUtils.PORTFOLIO_PRICE*rand_vector[i]
-#   print("This is the amount of dollars for each instrument in a portfolio of 10000$:\n", price_vector)
+# rand_vector = MyUtils.random_W(91)
+# price_vector = [0]*len(rand_vector)
+# for i  in range(0, len(price_vector)):
+#   price_vector[i] = MyUtils.PORTFOLIO_PRICE*rand_vector[i]
+# #   print("This is the amount of dollars for each instrument in a portfolio of 10000$:\n", price_vector)
 
 
-dataset_path = '/home/victor/Escritorio/nasdaq_completed/**'
-pathDict = globPaths(dataset_path)
-print("\n\n", pathDict)
-pathList = {}
-for key, value in pathDict.items():
-  if '.csv' in value:
-    pathList.update({key:value})
-  else:
-    pass
-print(pathList)
+# dataset_path = '/home/victor/Escritorio/nasdaq_completed/**'
+# pathDict = globPaths(dataset_path)
+# print("\n\n", pathDict)
+# pathList = {}
+# for key, value in pathDict.items():
+#   if '.csv' in value:
+#     pathList.update({key:value})
+#   else:
+#     pass
+# print(pathList)
 
-# priceDict19 = {"AAPL" : [0]*27*250, "AMGN":[0]*27*250 , "AXP": [0]*27*250, "BA":[0]*27*250, "CAT": 0, "CRM": 0, "CSCO": 0, "CVX": 0, "DIS":0, "DOW":0, "GS":0, "HD":0, "HON": 0, "IBM":0, "INTC": 0, "JNJ":0, "JPM": 0, "KO":0, "MCD":0, "MMM":0, "MRK":0, "MSFT":0, "NKE": 0 , "PG": 0 , "TRV":0, "UNH": 0, "V":0, "VZ":0, "WBA": 0, "WMT":0 }
-# priceDict20 = {"AAPL" : 0, "AMGN":0 , "AXP": 0, "BA":0, "CAT": 0, "CRM": 0, "CSCO": 0, "CVX": 0, "DIS":0, "DOW":0, "GS":0, "HD":0, "HON": 0, "IBM":0, "INTC": 0, "JNJ":0, "JPM": 0, "KO":0, "MCD":0, "MMM":0, "MRK":0, "MSFT":0, "NKE": 0 , "PG": 0 , "TRV":0, "UNH": 0, "V":0, "VZ":0, "WBA": 0, "WMT":0 }
-# priceDict21 = {"AAPL" : 0, "AMGN":0 , "AXP": 0, "BA":0, "CAT": 0, "CRM": 0, "CSCO": 0, "CVX": 0, "DIS":0, "DOW":0, "GS":0, "HD":0, "HON": 0, "IBM":0, "INTC": 0, "JNJ":0, "JPM": 0, "KO":0, "MCD":0, "MMM":0, "MRK":0, "MSFT":0, "NKE": 0 , "PG": 0 , "TRV":0, "UNH": 0, "V":0, "VZ":0, "WBA": 0, "WMT":0 }
-# priceDict22 = {"AAPL" : 0, "AMGN":0 , "AXP": 0, "BA":0, "CAT": 0, "CRM": 0, "CSCO": 0, "CVX": 0, "DIS":0, "DOW":0, "GS":0, "HD":0, "HON": 0, "IBM":0, "INTC": 0, "JNJ":0, "JPM": 0, "KO":0, "MCD":0, "MMM":0, "MRK":0, "MSFT":0, "NKE": 0 , "PG": 0 , "TRV":0, "UNH": 0, "V":0, "VZ":0, "WBA": 0, "WMT":0 }
-# for key in priceDict19:
-#   priceDict19[key] = [0]*27*250
-#   priceDict20[key] = [0]*27*250
-#   priceDict21[key] = [0]*27*250
-#   priceDict22[key] = [0]*27*250
+# # priceDict19 = {"AAPL" : [0]*27*250, "AMGN":[0]*27*250 , "AXP": [0]*27*250, "BA":[0]*27*250, "CAT": 0, "CRM": 0, "CSCO": 0, "CVX": 0, "DIS":0, "DOW":0, "GS":0, "HD":0, "HON": 0, "IBM":0, "INTC": 0, "JNJ":0, "JPM": 0, "KO":0, "MCD":0, "MMM":0, "MRK":0, "MSFT":0, "NKE": 0 , "PG": 0 , "TRV":0, "UNH": 0, "V":0, "VZ":0, "WBA": 0, "WMT":0 }
+# # priceDict20 = {"AAPL" : 0, "AMGN":0 , "AXP": 0, "BA":0, "CAT": 0, "CRM": 0, "CSCO": 0, "CVX": 0, "DIS":0, "DOW":0, "GS":0, "HD":0, "HON": 0, "IBM":0, "INTC": 0, "JNJ":0, "JPM": 0, "KO":0, "MCD":0, "MMM":0, "MRK":0, "MSFT":0, "NKE": 0 , "PG": 0 , "TRV":0, "UNH": 0, "V":0, "VZ":0, "WBA": 0, "WMT":0 }
+# # priceDict21 = {"AAPL" : 0, "AMGN":0 , "AXP": 0, "BA":0, "CAT": 0, "CRM": 0, "CSCO": 0, "CVX": 0, "DIS":0, "DOW":0, "GS":0, "HD":0, "HON": 0, "IBM":0, "INTC": 0, "JNJ":0, "JPM": 0, "KO":0, "MCD":0, "MMM":0, "MRK":0, "MSFT":0, "NKE": 0 , "PG": 0 , "TRV":0, "UNH": 0, "V":0, "VZ":0, "WBA": 0, "WMT":0 }
+# # priceDict22 = {"AAPL" : 0, "AMGN":0 , "AXP": 0, "BA":0, "CAT": 0, "CRM": 0, "CSCO": 0, "CVX": 0, "DIS":0, "DOW":0, "GS":0, "HD":0, "HON": 0, "IBM":0, "INTC": 0, "JNJ":0, "JPM": 0, "KO":0, "MCD":0, "MMM":0, "MRK":0, "MSFT":0, "NKE": 0 , "PG": 0 , "TRV":0, "UNH": 0, "V":0, "VZ":0, "WBA": 0, "WMT":0 }
+# # for key in priceDict19:
+# #   priceDict19[key] = [0]*27*250
+# #   priceDict20[key] = [0]*27*250
+# #   priceDict21[key] = [0]*27*250
+# #   priceDict22[key] = [0]*27*250
 
-df=pd.read_csv(list(pathList.values())[0])
-##print(df.head) Aquí tengo el dataframe con la ruta del archivo, hay que meterlo en un for...
-save_returns_iter = '/home/victor/Escritorio/nasdaq_returns'
-for v in pathList.values():
-  print('Iterating thru: '+v)
-  df = pd.read_csv(v)
-  df = df.drop(['open', 'high', 'low'], axis=1)
-  array = np.asarray(df)
-  [rows, columns] = array.shape
-  returns = MyUtils.computeDailyReturns(array,rows, columns)
-  returns = pd.DataFrame(returns, columns=['time', 'close', 'volume'])
-  aux_volume = df.drop(['time', 'close'], axis =1)
-  df = df.drop(['close', 'volume'], axis=1)
-  returns = returns.drop(['time'], axis=1)
-  df = df.join(returns)
-  df = df.drop(['volume'],axis=1)
-  df = df.join(aux_volume)
-  [n,v_path] = str(v).split("/home/victor/Escritorio/nasdaq_completed")
-  save_returns_path =save_returns_iter+ v_path
-  pd.DataFrame(df).to_csv(save_returns_path)
+# df=pd.read_csv(list(pathList.values())[0])
+# ##print(df.head) Aquí tengo el dataframe con la ruta del archivo, hay que meterlo en un for...
+# save_returns_iter = '/home/victor/Escritorio/nasdaq_returns'
+# for v in pathList.values():
+#   print('Iterating thru: '+v)
+#   df = pd.read_csv(v)
+#   df = df.drop(['open', 'high', 'low'], axis=1)
+#   array = np.asarray(df)
+#   [rows, columns] = array.shape
+#   returns = MyUtils.computeDailyReturns(array,rows, columns)
+#   returns = pd.DataFrame(returns, columns=['time', 'close', 'volume'])
+#   aux_volume = df.drop(['time', 'close'], axis =1)
+#   df = df.drop(['close', 'volume'], axis=1)
+#   returns = returns.drop(['time'], axis=1)
+#   df = df.join(returns)
+#   df = df.drop(['volume'],axis=1)
+#   df = df.join(aux_volume)
+#   [n,v_path] = str(v).split("/home/victor/Escritorio/nasdaq_completed")
+#   save_returns_path =save_returns_iter+ v_path
+#   pd.DataFrame(df).to_csv(save_returns_path)
   #save_path = 
 # for key in pathDict:
 #   a, b, c ,d = returnPrice(pathDict[key], priceDict19, priceDict20, priceDict21, priceDict22)
@@ -266,4 +266,62 @@ for v in pathList.values():
 # print("\nNumber of stocks in 2021:\n",nStocks21)
 # print("\nNumber of stocks in 2022:\n",nStocks22)
 
+
+import os
+import pandas as pd
+import numpy as np 
+from MyUtils import * 
+text = '''
+AAPL.US ANSS.US CSCO.US FAST.US ISRG.US MRVL.US PEP.US TXN.US
+ABNB.US ASML.US FISV.US JD.US MSFT.US QCOM.US VRSK.US
+ADBE.US ATVI.US CSX.US FTNT.US KLAC.US MU.US REGN.US VRTX.US
+ADI.US AVGO.US CTAS.US GFS.US LCID.US NFLX.US RIVN.US WDAY.US
+ADP.US AZN.US CTSH.US GILD.US LRCX.US NVDA.US ROST.US XEL.US
+ADSK.US BIIB.US DDOG.US GOOGL.US LULU.US NXPI.US SBUX.US ZM.US
+AEP.US CDNS.US DLTR.US GOOG.US MAR.US ODFL.US SGEN.US ZS.US
+ALGN.US CHTR.US DXCM.US HON.US MDLZ.US ORLY.US SIRI.US
+AMAT.US CMCSA.US EA.US IDXX.US MELI.US PANW.US SNPS.US
+AMD.US COST.US EBAY.US ILMN.US META.US PAYX.US TEAM.US
+AMGN.US CPRT.US ENPH.US INTC.US MNST.US PCAR.US TMUS.US
+AMZN.US CRWD.US FANG.US INTU.US MRNA.US PDD.US TSLA.US
+'''
+
+# Split the text into a list and sort it alphabetically
+stocks_list = sorted(text.split())
+
+# Print the sorted list
+#print(stocks_list)
+
+year_list = ['2021','2022','2023']
+
+for i in range(0,len(stocks_list)):
+  for j in range(0,len(year_list)):
+    aux = '/' +  stocks_list[i] +'/' +  year_list[j]
+    folder_path = '/home/victor/Escritorio/nasdaq_completed' +aux
+    save_at = '/home/victor/Escritorio/nasdaq_returns' +aux
+    # Get the absolute path of the folder
+    folder_abs_path = os.path.abspath(folder_path)
+
+    # Create an empty DataFrame to store the combined data
+    combined_data = pd.DataFrame()
+
+    # Iterate over the files in the folder
+    for filename in os.listdir(folder_abs_path):
+        if filename.endswith('.csv'):  # Check if the file is a CSV file
+            file_path = os.path.join(folder_abs_path, filename)
+            
+            # Read the CSV file into a DataFrame
+            df = pd.read_csv(file_path)
+            df = df.drop(columns=[df.columns[1], df.columns[2], df.columns[3]])
+            # Append the data to the combined DataFrame
+            array = np.asarray(df)
+            [rows, columns] = array.shape
+            returns = MyUtils.computeDailyReturns(array,rows, columns)
+            returns = pd.DataFrame(returns, columns=['time', 'close', 'volume'])
+            returns['time'] = df['time']
+            returns['volume'] = df['volume']
+            save_here = save_at + '/' + file_path.split('/')[-1]
+            returns.to_csv(save_here)
+            print("Good:" + file_path)
+# Print the combined data
 
