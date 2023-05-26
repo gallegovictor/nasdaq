@@ -77,5 +77,5 @@ for s in stocks_list:
     save_here = '/home/victor/Escritorio/nasdaq_ind_returns/' + s + '.csv'
     df_result.to_csv(save_here)
         # Print the DataFrame column
-print(df_result)
-df_result.to_csv('/home/victor/Escritorio/nasdaq_test.csv')
+print("Transformation ended successfully.")
+#df_result.to_csv('/home/victor/Escritorio/nasdaq_test.csv')
