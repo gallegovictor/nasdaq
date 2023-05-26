@@ -70,9 +70,12 @@ for s in stocks_list:
                 print(file_path + " transformed successfully.")
         # Create a DataFrame column using the extracted values
         #df_column = pd.DataFrame({'SecondColumn': second_column_values})
-    if len(second_column_values) != 18750:
-        second_column_values = assign_random_values((18750-len(second_column_values)), second_column_values)
-    df_result[s] = second_column_values
+    # if len(second_column_values) != 18750:
+    #     second_column_values = assign_random_values((18750-len(second_column_values)), second_column_values)
+    # df_result[s] = second_column_values
+    df_result = pd.DataFrame({s: second_column_values})
+    save_here = '/home/victor/Escritorio/nasdaq_ind_returns/' + s + '.csv'
+    df_result.to_csv(save_here)
         # Print the DataFrame column
 print(df_result)
 df_result.to_csv('/home/victor/Escritorio/nasdaq_test.csv')
