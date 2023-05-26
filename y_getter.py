@@ -13,4 +13,4 @@ y = df.dot(np.ones(df.shape[1]))
 y.to_csv('/home/victor/Documentos/GitHub/nasdaq/y.csv')
 
 
-w_list = MyUtils.solver(df,y)
+#w_list = MyUtils.solver(df,y)
