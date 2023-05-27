@@ -15,8 +15,8 @@ rand_nums = np.append(rand_nums, 1 - np.sum(rand_nums))
 #print("Sum:", np.sum(rand_nums))
 
 # Print the generated random numbers
-# print("Random Numbers:")
-# print(rand_nums)
+print("Random Numbers:")
+print(rand_nums)
 
 df = pd.read_csv('/home/victor/Documentos/GitHub/nasdaq/matrix.csv')
 df = df.drop(df.columns[0], axis=1)
@@ -27,4 +27,4 @@ for i, col in enumerate(df.columns[:90]):
 
 print(df.head)
 
-df.to_csv('/home/victor/Documentos/GitHub/nasdaq/X.csv')
+#df.to_csv('/home/victor/Documentos/GitHub/nasdaq/X.csv')
