@@ -16,7 +16,7 @@ def solver(X,y):
 
 
     h = matrix(np.zeros((c,1)))
-    alpha = 0.00000000000001
+    alpha = 0.01
     print("This is A:", A.size)
     print("This is G:", G.size)
 

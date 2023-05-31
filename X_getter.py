@@ -22,9 +22,9 @@ df = pd.read_csv('/home/victor/Documentos/GitHub/nasdaq/matrix.csv')
 df = df.drop(df.columns[0], axis=1)
 print(df.head)
 
-for i, col in enumerate(df.columns[:90]):
-    df[col] = df[col] * rand_nums[i]
+# for i, col in enumerate(df.columns[:90]):
+#     df[col] = df[col] * rand_nums[i]
 
 print(df.head)
 
-#df.to_csv('/home/victor/Documentos/GitHub/nasdaq/X.csv')
+df.to_csv('/home/victor/Documentos/GitHub/nasdaq/X.csv')
