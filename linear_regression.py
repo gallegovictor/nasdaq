@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from MyUtils import *
 import random 
-
+import matplotlib.pyplot as plt
 
 X = pd.read_csv('/home/victor/Documentos/GitHub/nasdaq/X.csv')
 y = pd.read_csv('/home/victor/Documentos/GitHub/nasdaq/y.csv')
@@ -40,12 +40,12 @@ score_list = []
 col_dict = {}
 save_columns = X.columns
 chosen_instruments = np.zeros((100,X.shape[1]))
-for a in range(0,100):
+for a in range(0,10):
   i=0
   for i in range(0,iters):
     if first == True:
       X
-      random_numbers = random.sample(range(0, len(X.columns)),78)
+      random_numbers = random.sample(range(0, len(X.columns)),59)
       #print(X.columns[list(random_numbers.sort())])
     # Print the random numbers
       print(random_numbers)
@@ -64,7 +64,9 @@ for a in range(0,100):
     print("Score using days from: " + str(start) +"to" +str(finish))
     score = reg.score(temp[test_start:test_finish], y[test_start:test_finish])
     print("Score:", score)
-    score_list.append(score)
+    if score > 0:
+        score_list.append(score)
+    
     #print("Average score: so far", avg)
   avg = np.mean((np.array(score_list)))
   var = np.var((np.array(score_list)))
@@ -81,7 +83,19 @@ col_dict.update({avg:X.columns })
 
 best_columns = X[X.columns[np.argsort(sum(chosen_instruments)[::-1])]]
 best_columns = best_columns.drop(best_columns.columns[14:29], axis=1)
+x_values = range(len(score_list))
+
+# Create the plot
+plt.plot(x_values, score_list, marker='o')
+plt.axhline(np.mean(score_list), color='red', linestyle='--')
+
+# Add labels and title
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Plot of Points')
+plt.show()
 # best_columns.to_csv('/home/victor/Documentos/GitHub/TFG/2_weeks_training/X_best_columns_2W_14.csv')
 # y.to_csv('/home/victor/Documentos/GitHub/TFG/y.csv')
+print(MyUtils.solver(X, y))
 weights = MyUtils.solver(best_columns, y)
 print(weights)
