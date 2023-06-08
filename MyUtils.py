@@ -304,6 +304,7 @@ class MyUtils:
     #print(y.values.shape)
     print(X.shape)
     q = matrix(np.dot(np.transpose(y), X), (c,1))*-1
+    #q = matrix(np.dot(np.transpose(y), X), (X.shape[1],1))*-1 
     print("This is y: ",y)
     print("This is q:", q.size)
     print("This is vol:", vol)
