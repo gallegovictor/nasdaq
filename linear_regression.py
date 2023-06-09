@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 X = pd.read_csv('/home/victor/Documentos/GitHub/nasdaq/X.csv')
 y = pd.read_csv('/home/victor/Documentos/GitHub/nasdaq/y.csv')
-
+y = y.drop(y.columns[0], axis = 1)
 # np.random.seed(42)
 # X=X.drop(X.columns[0],axis=1)
 # y=y.drop(y.columns[0],axis=1)
@@ -32,7 +32,7 @@ y = pd.read_csv('/home/victor/Documentos/GitHub/nasdaq/y.csv')
 
 reg = LinearRegression().fit(X[:MyUtils.WEEKLY_SAMPLES], y[:MyUtils.WEEKLY_SAMPLES])
 print(reg.score(X[MyUtils.WEEKLY_SAMPLES:(MyUtils.WEEKLY_SAMPLES+MyUtils.DAILY_SAMPLES)], y[MyUtils.WEEKLY_SAMPLES:(MyUtils.WEEKLY_SAMPLES+MyUtils.DAILY_SAMPLES)]))
-
+index_results = []
 iters = int(X.shape[0]/100)
 print(iters)
 first = True
@@ -40,12 +40,12 @@ score_list = []
 col_dict = {}
 save_columns = X.columns
 chosen_instruments = np.zeros((100,X.shape[1]))
-for a in range(0,10):
+for a in range(0,5):
   i=0
   for i in range(0,iters):
     if first == True:
       X
-      random_numbers = random.sample(range(0, len(X.columns)),59)
+      random_numbers = random.sample(range(0, len(X.columns)),)
       #print(X.columns[list(random_numbers.sort())])
     # Print the random numbers
       print(random_numbers)
@@ -63,13 +63,19 @@ for a in range(0,10):
     reg = LinearRegression().fit(temp[start:finish], y[start:finish])
     print("Score using days from: " + str(start) +"to" +str(finish))
     score = reg.score(temp[test_start:test_finish], y[test_start:test_finish])
+    
     print("Score:", score)
-    if score > 0:
-        score_list.append(score)
+    #if score > 0:
+    score_list.append(score)
+      
+    #index_results.append()
     
     #print("Average score: so far", avg)
+  plt.scatter(y.values.flatten()[:18750], reg.predict(temp[0:18750]))
+  plt.show()
   avg = np.mean((np.array(score_list)))
   var = np.var((np.array(score_list)))
+  
   print("Average score in iter #:" +str(a)+" ", avg)
   print("Variance:  "+str(a)+" ", var)
   for j in range(0,len(temp.columns)):
@@ -84,6 +90,7 @@ col_dict.update({avg:X.columns })
 best_columns = X[X.columns[np.argsort(sum(chosen_instruments)[::-1])]]
 best_columns = best_columns.drop(best_columns.columns[14:29], axis=1)
 x_values = range(len(score_list))
+
 
 # Create the plot
 plt.plot(x_values, score_list, marker='o')
