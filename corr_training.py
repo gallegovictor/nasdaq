@@ -130,4 +130,4 @@ ax2.legend(loc='lower right')
 
 # Show the plot
 plt.show()
-plt.savefig('/home/victor/Documentos/GitHub/nasdaq/unsupervised_change_basket.png')
+#plt.savefig('/home/victor/Documentos/GitHub/nasdaq/unsupervised_change_basket.png')
