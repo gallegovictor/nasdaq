@@ -417,11 +417,6 @@ class MyUtils:
     eje.legend()
     #plt.show()
 
-  def make_histo_sup_vs_unsup(scores_rnd, best_scores, eje):
-    eje.hist(scores_rnd, label= 'Supervised Portfolios')
-    eje.axvline(np.max(np.array(best_scores)), color='red', lw=2, label = "Unsupervised portfolio")
-    eje.legend()
-    #plt.show()
 
   def get_all_smallest(d, n):
       """

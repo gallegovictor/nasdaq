@@ -47,7 +47,8 @@ for i in range(0,iters):
     reg.intercept_ = 0
     score = reg.score(temp[test_start:test_finish], y[test_start:test_finish])
     print("Score:", score)
-    score_list.append(score)
+    if score > 0:
+        score_list.append(score)
     #print("Average score: so far", avg)
     if (test_finish+250) > temp.shape[0]:
         break
