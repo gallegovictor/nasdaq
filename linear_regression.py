@@ -45,7 +45,7 @@ for a in range(0,100):
   for i in range(0,iters):
     if first == True:
       X
-      random_numbers = random.sample(range(0, len(X.columns)),78)
+      random_numbers = random.sample(range(0, len(X.columns)),43)
       #print(X.columns[list(random_numbers.sort())])
     # Print the random numbers
       print(random_numbers)
@@ -53,10 +53,10 @@ for a in range(0,100):
       temp = X[X.columns[random_numbers]]
     #X = X.drop(X.columns[-1], axis=1)
       print(temp.columns)
-    start= MyUtils.WEEKLY_SAMPLES*i*2
-    finish = (MyUtils.WEEKLY_SAMPLES*i*2+MyUtils.WEEKLY_SAMPLES)
-    test_start = (MyUtils.WEEKLY_SAMPLES*i*2+MyUtils.WEEKLY_SAMPLES+1)
-    test_finish = (MyUtils.WEEKLY_SAMPLES*i*2+MyUtils.WEEKLY_SAMPLES+1+MyUtils.WEEKLY_SAMPLES)
+    start= MyUtils.WEEKLY_SAMPLES*i*4
+    finish = (MyUtils.WEEKLY_SAMPLES*i*4+MyUtils.WEEKLY_SAMPLES)
+    test_start = (MyUtils.WEEKLY_SAMPLES*i*4+MyUtils.WEEKLY_SAMPLES+1)
+    test_finish = (MyUtils.WEEKLY_SAMPLES*i*4+MyUtils.WEEKLY_SAMPLES+1+MyUtils.WEEKLY_SAMPLES)
     if test_finish > temp.shape[0]:
       print("Broke")
       break
@@ -101,8 +101,8 @@ plt.xlabel('Number of scores')
 plt.ylabel('R² score')
 plt.title('Normalized peak values')
 plt.show()
-plt.savefig("nasdaq_normalized.png")
-best_columns.to_csv('/home/victor/Documentos/GitHub/TFG/2_weeks_training/X_best_columns_2W_14.csv')
+#plt.savefig("nasdaq_normalized.png")
+best_columns.to_csv('/home/victor/Documentos/GitHub/nasdaq/4_weeks_training/X_best_columns_4W_43.csv')
 # y.to_csv('/home/victor/Documentos/GitHub/TFG/y.csv')
 print(MyUtils.solver(X, y))
 weights = MyUtils.solver(best_columns, y)
